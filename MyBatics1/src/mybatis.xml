@@ -3,24 +3,24 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!-- 注册DB连接四要素属性文件 -->
+	<properties resource="jdbc.properties"/>
+	<!-- 定义类型别名 -->
+	<typeAliases>
+		<!-- <typeAlias type="com.bjpowernode.beans.Student" alias="Student"/> -->
+		<!-- 将指定包中所有类的简单类名当作其别名 -->
+		<package name="beans"/>
+	</typeAliases>
+	
 	<!-- 配置运行环境 -->
-	<environments default="onlineEM">
-		<environment id="onlineEM">
-			<transactionManager type="JDBC"/>
-			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.jdbc.Driver"/>
-				<property name="url" value="jdbc:mysql://127.0.0.1:3306/test1"/>
-				<property name="username" value="root"/>
-				<property name="password" value="123"/>
-			</dataSource>
-		</environment>
+	<environments default="testEM">
 		<environment id="testEM">
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.jdbc.Driver"/>
-				<property name="url" value="jdbc:mysql://127.0.0.1:3306/test1"/>
-				<property name="username" value="root"/>
-				<property name="password" value="123"/>
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.user}"/>
+				<property name="password" value="${jdbc.password}"/>
 			</dataSource>
 		</environment>
 	</environments>
